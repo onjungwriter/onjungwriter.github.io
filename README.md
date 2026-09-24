@@ -43,8 +43,9 @@ python3 -m http.server 4174
    git push -u origin main
    ```
 
-   이 컴퓨터에 다른 GitHub 계정이 로그인되어 있으면 권한 오류가 날 수 있습니다.
-   이때는 `onjungwriter` 계정으로 인증하거나(예: `gh auth login`), 개인 액세스 토큰을 사용합니다.
+   원격 주소는 SSH 별칭 `github.com-onjungwriter`를 씁니다. `~/.ssh/config`에서 이 별칭이
+   `~/.ssh/onjungwriter_ed25519` 키를 쓰도록 설정되어 있어, 이 컴퓨터의 다른 GitHub 계정과 섞이지 않습니다.
+   이 키의 공개키(`~/.ssh/onjungwriter_ed25519.pub`)는 onjungwriter 계정의 Settings → SSH and GPG keys에 등록되어 있어야 합니다.
 3. 저장소의 **Settings → Pages**에서 Source를 **Deploy from a branch**, Branch를 **main / (root)** 로 지정합니다.
    (`<계정>.github.io` 저장소는 보통 자동으로 켜져 있습니다.)
 4. 1~2분 뒤 https://onjungwriter.github.io 에서 확인합니다.
