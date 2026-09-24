@@ -95,7 +95,7 @@ li:focus-within > .cover::after,
 li.in-view > .cover::after { opacity: 0; }
 
 /* 연락 */
-.links { list-style: none; margin: 24px 0 0; padding: 0; display: flex; gap: 28px; flex-wrap: wrap; }
+.links { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; flex-wrap: wrap; }
 
 .site-footer { padding: 72px 0 56px; font-size: 13px; color: var(--ink-soft); }
 
