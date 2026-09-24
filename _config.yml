@@ -1,0 +1,12 @@
+# GitHub Pages 설정
+# 지금은 빌드 없이 index.html 을 그대로 배포합니다.
+# 나중에 블로그를 붙일 때 이 파일에 Jekyll 설정(title, permalink 등)을 더하고 _posts/ 폴더를 만들면 됩니다.
+
+title: 온정
+lang: ko
+
+# 배포에서 제외할 파일
+exclude:
+  - design/
+  - README.md
+  - .claude/

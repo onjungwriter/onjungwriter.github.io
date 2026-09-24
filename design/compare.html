@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>온정 시안 비교</title>
+<style>
+ body{margin:0;background:#F3F1EF;color:#3B2F2A;font:14px/1.6 -apple-system,"Apple SD Gothic Neo",sans-serif}
+ .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:16px;height:100vh;box-sizing:border-box}
+ figure{margin:0;display:flex;flex-direction:column;min-height:0}
+ figcaption{padding:0 2px 8px;display:flex;justify-content:space-between}
+ figcaption a{color:#8C8079}
+ .frame{flex:1;overflow:hidden;border-radius:6px;background:#fff;box-shadow:0 0 0 1px #E4DEDA;position:relative}
+ iframe{border:0;width:250%;height:250%;transform:scale(.4);transform-origin:0 0;position:absolute}
+ @media (max-width:900px){.grid{grid-template-columns:1fr;height:auto}.frame{flex:none;height:80vh}}
+</style></head><body>
+<div class="grid">
+ <figure><figcaption><b>A. 원고지</b><a href="a-manuscript.html" target="_blank">크게 보기</a></figcaption><div class="frame"><iframe src="a-manuscript.html" title="시안 A"></iframe></div></figure>
+ <figure><figcaption><b>B. 세로쓰기</b><a href="b-vertical.html" target="_blank">크게 보기</a></figcaption><div class="frame"><iframe src="b-vertical.html" title="시안 B"></iframe></div></figure>
+ <figure><figcaption><b>C. 데워지는 글</b><a href="c-warmth.html" target="_blank">크게 보기</a></figcaption><div class="frame"><iframe src="c-warmth.html" title="시안 C"></iframe></div></figure>
+</div></body></html>
