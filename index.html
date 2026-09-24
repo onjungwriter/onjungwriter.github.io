@@ -32,7 +32,8 @@ layout: default
         <span class="cover">{% if book.cover %}<img src="{{ book.cover | relative_url }}" alt="『{{ book.title | escape }}』 표지" loading="lazy">{% endif %}</span>
         <span>
           {%- if book.link %}<a class="t" href="{{ book.link | escape }}">{{ book.title | escape }}</a>{% else %}<span class="t">{{ book.title | escape }}</span>{% endif %}
-          {%- if book.description %}<span class="d">{{ book.description | escape }}</span>{% endif -%}
+          {%- assign meta = "" | split: "" | push: book.genre | push: book.subtitle | push: book.publisher | compact | join: ", " %}
+          {%- if meta != "" %}<span class="d">{{ meta | escape }}</span>{% endif -%}
         </span>
       </li>
       {%- endfor %}

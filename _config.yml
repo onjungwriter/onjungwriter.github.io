@@ -1,14 +1,18 @@
 # 사이트 기본 정보
 name: 온정
-title: 온정 | 작가
-description: 어떤 방식으로든 끊임없이 기록하는 사람.
+# 페이지 제목과 검색·공유용 설명은 _data/seo.yml 에 있습니다 (관리 화면에서 수정)
 lang: ko
 url: https://onjungwriter.github.io
 baseurl: ""
+repository: onjungwriter/onjungwriter.github.io
 
 # 내용은 _data/ 폴더의 파일에 있습니다. 관리 화면(/admin)에서 고치면 이 파일들이 바뀝니다.
 
 markdown: kramdown
+
+# sitemap.xml 자동 생성 (GitHub Pages 기본 지원 플러그인)
+plugins:
+  - jekyll-sitemap
 timezone: Asia/Seoul
 
 # 배포에서 제외할 파일

@@ -1,26 +1,33 @@
 books:
   - title: 사물을 보는 방식
     year: "2025"
-    description: 산문집, 마누스
+    genre: 산문집
+    publisher: 마누스
     cover: /assets/images/covers/book-2025-sabul.jpg
     link: https://search.shopping.naver.com/book/catalog/55608405506
   - title: 너를 돌보며 어른이 된다
     year: "2024"
-    description: 에세이, 마누스
+    genre: 에세이
+    publisher: 마누스
     cover: /assets/images/covers/book-2024-dolbom.jpg
     link: https://search.shopping.naver.com/book/catalog/50379168642
   - title: 방황의 조각들
     year: "2022"
-    description: 에세이, 삼십춘기 화학 연구원의 방황 이야기, 마누스
+    genre: 에세이
+    subtitle: 삼십춘기 화학 연구원의 방황 이야기
+    publisher: 마누스
     cover: /assets/images/covers/book-2022-banghwang.jpg
     link: https://search.shopping.naver.com/book/catalog/32470523653
   - title: 상실의 이해
     year: "2021"
-    description: 과학 스토리 단편선, 공저, 월간토마토
+    genre: 과학 스토리 단편선, 공저
+    publisher: 월간토마토
     cover: /assets/images/covers/book-2021-sangsil.jpg
     link: https://search.shopping.naver.com/book/catalog/32456305856
   - title: 미서부, 같이 가줄래?
     year: "2021"
-    description: 에세이, 부부라는 이름으로 1800km 로드트립, 푸른길
+    genre: 에세이
+    subtitle: 부부라는 이름으로 1800km 로드트립
+    publisher: 푸른길
     cover: /assets/images/covers/book-2021-miseobu.jpg
     link: https://search.shopping.naver.com/book/catalog/32443833181

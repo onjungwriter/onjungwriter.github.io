@@ -1,0 +1,75 @@
+{%- comment %}
+검색엔진용 구조화 데이터 (schema.org JSON-LD)
+작가 온정이 누구인지, 어떤 책을 썼는지, 브런치·블로그·인스타그램이 같은 사람인지 알려준다.
+{% endcomment -%}
+{%- assign about = site.data.about -%}
+{%- assign contact = site.data.contact -%}
+{%- assign seo = site.data.seo -%}
+{%- assign person_id = site.url | append: '/#person' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ site.url | append: '/#website' | jsonify }},
+      "url": {{ site.url | append: '/' | jsonify }},
+      "name": {{ site.name | jsonify }},
+      "inLanguage": "ko-KR",
+      "publisher": { "@id": {{ person_id | jsonify }} }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": {{ site.url | append: '/#profile' | jsonify }},
+      "url": {{ site.url | append: '/' | jsonify }},
+      "name": {{ seo.title | jsonify }},
+      "description": {{ seo.description | jsonify }},
+      "inLanguage": "ko-KR",
+      "isPartOf": { "@id": {{ site.url | append: '/#website' | jsonify }} },
+      "mainEntity": { "@id": {{ person_id | jsonify }} }
+    },
+    {
+      "@type": "Person",
+      "@id": {{ person_id | jsonify }},
+      "name": {{ site.name | jsonify }},
+      {%- if about.names.size > 1 %}
+      "alternateName": {{ about.names | shift | jsonify }},
+      {%- endif %}
+      "jobTitle": "작가",
+      "description": {{ about.lede | default: seo.description | jsonify }},
+      "url": {{ site.url | append: '/' | jsonify }},
+      {%- if about.photo %}
+      "image": {{ about.photo | absolute_url | jsonify }},
+      {%- endif %}
+      {%- if contact.email %}
+      "email": {{ contact.email | prepend: 'mailto:' | jsonify }},
+      {%- endif %}
+      "sameAs": {{ contact.links | map: "url" | jsonify }}
+    }
+    {%- for book in site.data.books.books %},
+    {
+      "@type": "Book",
+      "name": {{ book.title | jsonify }},
+      "author": { "@id": {{ person_id | jsonify }} },
+      {%- if book.subtitle %}
+      "alternativeHeadline": {{ book.subtitle | jsonify }},
+      {%- endif %}
+      {%- if book.genre %}
+      "genre": {{ book.genre | jsonify }},
+      {%- endif %}
+      {%- if book.publisher %}
+      "publisher": { "@type": "Organization", "name": {{ book.publisher | jsonify }} },
+      {%- endif %}
+      {%- if book.cover %}
+      "image": {{ book.cover | absolute_url | jsonify }},
+      {%- endif %}
+      {%- if book.link %}
+      "url": {{ book.link | jsonify }},
+      {%- endif %}
+      "datePublished": {{ book.year | jsonify }},
+      "inLanguage": "ko-KR"
+    }
+    {%- endfor %}
+  ]
+}
+</script>

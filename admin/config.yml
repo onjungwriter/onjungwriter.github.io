@@ -64,6 +64,35 @@ collections:
               - { name: label, label: 이름, widget: string, hint: "예: 인스타그램" }
               - { name: url, label: 주소, widget: string }
 
+      - name: seo
+        label: 검색·공유 설정
+        file: _data/seo.yml
+        fields:
+          - name: title
+            label: 페이지 제목
+            widget: string
+            hint: 브라우저 탭과 검색 결과에 보이는 제목이에요. 이름과 대표작을 넣으면 검색에 잘 걸려요.
+          - name: description
+            label: 설명
+            widget: text
+            hint: 검색 결과와 카카오톡 공유 미리보기에 보이는 설명이에요. 80~120자가 적당해요.
+          - name: image
+            label: 공유 이미지
+            widget: image
+            required: false
+            hint: 1200×630 크기를 권장해요.
+          - { name: image_alt, label: 공유 이미지 설명, widget: string, required: false }
+          - name: verification
+            label: 검색엔진 소유 확인
+            label_singular: 확인 코드
+            widget: list
+            required: false
+            hint: 네이버 서치어드바이저, 구글 서치 콘솔에서 받은 meta 태그의 name 과 content 값을 넣어요.
+            summary: "{{name}}"
+            fields:
+              - { name: name, label: name, widget: string, hint: "예: naver-site-verification" }
+              - { name: content, label: content, widget: string }
+
   # ───── 저서 ─────
   - name: books
     label: 저서
@@ -84,11 +113,9 @@ collections:
                 label: 출간 연도
                 widget: string
                 pattern: ['^\d{4}$', '연도는 숫자 네 자리로 적어 주세요. 예: 2026']
-              - name: description
-                label: 설명
-                widget: string
-                required: false
-                hint: "장르, 부제, 출판사를 쉼표로 이어서 적어요. 예: 산문집, 마누스"
+              - { name: genre, label: 장르, widget: string, required: false, hint: "예: 산문집, 에세이" }
+              - { name: subtitle, label: 부제, widget: string, required: false }
+              - { name: publisher, label: 출판사, widget: string, required: false }
               - name: cover
                 label: 표지
                 widget: image

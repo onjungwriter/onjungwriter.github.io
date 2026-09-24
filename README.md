@@ -11,7 +11,7 @@ https://onjungwriter.github.io/admin
 1. **Sign In Using Access Token**을 누릅니다.
 2. 안내된 링크에서 onjungwriter 계정의 GitHub 토큰을 만들어 붙여넣습니다. 처음 한 번만 하면 됩니다.
 3. 왼쪽 메뉴에서 고칠 곳을 고릅니다.
-   - **소개 페이지:** 첫 화면, 소개, 연락
+   - **소개 페이지:** 첫 화면, 소개, 연락, 검색·공유 설정
    - **저서:** 책 목록 (위에 있는 책이 먼저 보임)
    - **이력:** 수상과 선정, 강의와 활동 (연도별)
 4. 고친 뒤 오른쪽 위 **Save**를 누르면 GitHub에 저장되고, 1~2분 뒤 사이트에 반영됩니다.
@@ -30,6 +30,7 @@ _data/                  페이지 내용 (관리 화면이 고치는 파일)
   awards.yml            수상과 선정
   activities.yml        강의와 활동
   contact.yml           이메일, 링크
+  seo.yml               페이지 제목, 검색·공유용 설명, 공유 이미지, 검색엔진 소유 확인 코드
 _layouts/default.html   공통 머리/꼬리 (meta 태그, 글꼴, 스크립트)
 _includes/history.html  연도별 이력 목록
 index.html              소개 페이지 틀 (내용은 _data/에서 읽음)
@@ -39,8 +40,10 @@ assets/
   css/style.css         스타일
   js/main.js            '데워지는 글' 효과, 모바일 표지 효과
   images/               사진, 표지, 파비콘
-_config.yml             사이트 이름, 주소, 검색·공유용 설명, 배포 제외 목록
-design/                 디자인 시안 A, B, C (배포되지 않음)
+_includes/structured-data.html  검색엔진용 작가·저서 정보 (JSON-LD)
+robots.txt              검색엔진 수집 규칙 (관리 화면 제외)
+_config.yml             사이트 이름, 주소, 사이트맵 플러그인, 배포 제외 목록
+design/                 디자인 시안 A, B, C, 공유 이미지 원본 (배포되지 않음)
 ```
 
 ## 로컬에서 미리 보기
