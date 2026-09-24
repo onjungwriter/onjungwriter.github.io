@@ -18,6 +18,7 @@ timezone: Asia/Seoul
 # 배포에서 제외할 파일
 exclude:
   - design/
+  - infra/
   - README.md
   - Gemfile
   - Gemfile.lock

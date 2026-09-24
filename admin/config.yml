@@ -5,6 +5,9 @@ backend:
   name: github
   repo: onjungwriter/onjungwriter.github.io
   branch: main
+  # 'Sign In with GitHub' 로그인 중계 서버 (infra/cms-auth, 172.30.1.33 nginx 뒤)
+  base_url: https://jhong.n-e.kr/onjung-auth
+  auth_endpoint: auth
   commit_messages:
     create: "{{collection}} 추가: {{slug}}"
     update: "{{collection}} 수정: {{slug}}"

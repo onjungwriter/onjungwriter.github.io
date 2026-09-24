@@ -8,15 +8,15 @@ GitHub Pages(Jekyll)로 배포하고, 내용은 관리 화면에서 고칩니다
 
 https://onjungwriter.github.io/admin
 
-1. **Sign In Using Access Token**을 누릅니다.
-2. 안내된 링크에서 onjungwriter 계정의 GitHub 토큰을 만들어 붙여넣습니다. 처음 한 번만 하면 됩니다.
+1. **Sign In with GitHub**을 누르고, onjungwriter 계정으로 GitHub에 로그인합니다. 처음 한 번은 '온정 사이트 관리' 앱에 저장소 접근을 허락합니다.
+2. (다른 방법) **Sign In Using Access Token**으로 GitHub 토큰을 붙여넣어도 됩니다.
 3. 왼쪽 메뉴에서 고칠 곳을 고릅니다.
    - **소개 페이지:** 첫 화면, 소개, 연락, 검색·공유 설정
    - **저서:** 책 목록 (위에 있는 책이 먼저 보임)
    - **이력:** 수상과 선정, 강의와 활동 (연도별)
 4. 고친 뒤 오른쪽 위 **Save**를 누르면 GitHub에 저장되고, 1~2분 뒤 사이트에 반영됩니다.
 
-> **Sign In with GitHub** 버튼은 로그인 중계 서버(Cloudflare Worker, [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth))를 따로 붙여야 동작합니다.
+> **Sign In with GitHub** 버튼은 로그인 중계 서버(`infra/cms-auth/`)를 거칩니다. 172.30.1.33 의 nginx 뒤 `https://jhong.n-e.kr/onjung-auth/` 에서 돌고, 그 Mac이 꺼져 있으면 GitHub 로그인만 안 됩니다(사이트는 그대로 뜸). 이때는 토큰으로 로그인하면 됩니다. 운영 방법은 [infra/cms-auth/README.md](infra/cms-auth/README.md).
 
 관리 화면은 [Sveltia CMS](https://github.com/sveltia/sveltia-cms)를 쓰고, 설정은 `admin/config.yml`에 있습니다.
 
@@ -43,6 +43,7 @@ assets/
 _includes/structured-data.html  검색엔진용 작가·저서 정보 (JSON-LD)
 robots.txt              검색엔진 수집 규칙 (관리 화면 제외)
 _config.yml             사이트 이름, 주소, 사이트맵 플러그인, 배포 제외 목록
+infra/cms-auth/         관리 화면 GitHub 로그인 중계 서버 (배포되지 않음)
 design/                 디자인 시안 A, B, C, 공유 이미지 원본 (배포되지 않음)
 ```
 

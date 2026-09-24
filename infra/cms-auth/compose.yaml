@@ -1,0 +1,20 @@
+# 관리 화면 GitHub 로그인 중계 서버
+# 172.30.1.33 의 /Users/jisu/data-ext/docker/onjung-cms-auth 에서 실행한다.
+# 포트를 밖으로 열지 않고 proxy-net 에만 붙는다. nginx 가 /onjung-auth/ 경로로 연결한다.
+services:
+  onjung-cms-auth:
+    image: node:20-alpine
+    container_name: onjung-cms-auth
+    restart: always
+    working_dir: /app
+    command: ["node", "server.mjs"]
+    volumes:
+      - ./server.mjs:/app/server.mjs:ro
+    env_file: .env
+    read_only: true
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true
