@@ -44,6 +44,8 @@ a:focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; border-r
   letter-spacing: -.01em;
 }
 .hero p { margin: 32px 0 0; color: var(--ink-soft); max-width: 26em; }
+/* 보조 문구가 비어 있어도 두 줄만큼 자리를 지켜 첫 화면 배치가 바뀌지 않게 */
+.hero-sub { min-height: 3.7em; }
 
 /* 섹션 */
 section { padding: 72px 0; border-top: 1px solid var(--rule); }
