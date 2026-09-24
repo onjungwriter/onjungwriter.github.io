@@ -1,12 +1,21 @@
-# GitHub Pages 설정
-# 지금은 빌드 없이 index.html 을 그대로 배포합니다.
-# 나중에 블로그를 붙일 때 이 파일에 Jekyll 설정(title, permalink 등)을 더하고 _posts/ 폴더를 만들면 됩니다.
-
-title: 온정
+# 사이트 기본 정보
+name: 온정
+title: 온정 | 작가
+description: 어떤 방식으로든 끊임없이 기록하는 사람.
 lang: ko
+url: https://onjungwriter.github.io
+baseurl: ""
+
+# 내용은 _data/ 폴더의 파일에 있습니다. 관리 화면(/admin)에서 고치면 이 파일들이 바뀝니다.
+
+markdown: kramdown
+timezone: Asia/Seoul
 
 # 배포에서 제외할 파일
 exclude:
   - design/
   - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
   - .claude/

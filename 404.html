@@ -1,23 +1,11 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>페이지를 찾을 수 없어요 | 온정</title>
-<meta name="robots" content="noindex">
-<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-<div class="col">
-  <header class="site-header"><span class="ember" aria-hidden="true"></span><a href="/">온정</a></header>
-  <main class="hero">
-    <h1>찾는 페이지가 없어요.</h1>
-    <p>주소가 바뀌었거나 없어진 페이지예요. <a href="/">첫 화면으로 가기</a></p>
-  </main>
-</div>
-</body>
-</html>
+---
+layout: default
+title: 페이지를 찾을 수 없어요 | 온정
+permalink: /404.html
+noindex: true
+no_script: true
+---
+<main class="hero">
+  <h1>찾는 페이지가 없어요.</h1>
+  <p>주소가 바뀌었거나 없어진 페이지예요. <a href="{{ '/' | relative_url }}">첫 화면으로 가기</a></p>
+</main>

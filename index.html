@@ -1,91 +1,57 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>온정 | 작가</title>
-<meta name="description" content="어떤 방식으로든 끊임없이 기록하는 사람.">
-<meta name="theme-color" content="#FDFCFA">
-<link rel="canonical" href="https://onjungwriter.github.io/">
-<meta property="og:url" content="https://onjungwriter.github.io/">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ko_KR">
-<meta property="og:site_name" content="온정">
-<meta property="og:title" content="온정 | 작가">
-<meta property="og:description" content="어떤 방식으로든 끊임없이 기록하는 사람.">
-<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
-<script src="assets/js/main.js" defer></script>
-</head>
-<body>
-<div class="col">
-  <header class="site-header"><span class="ember" aria-hidden="true"></span><a href="./">온정</a></header>
+---
+layout: default
+---
+{%- assign hero = site.data.hero -%}
+{%- assign about = site.data.about -%}
+{%- assign contact = site.data.contact -%}
+<main>
+  <div class="hero">
+    <h1>{{ hero.title | strip | escape | newline_to_br }}</h1>
+    {%- comment %} 보조 문구는 비어 있어도 자리를 지킨다 {% endcomment %}
+    <p class="hero-sub">{{ hero.sub | strip | escape }}</p>
+  </div>
 
-  <main>
-    <div class="hero">
-      <h1>어떤 방식으로든<br>끊임없이 기록하는 사람.</h1>
-      <!-- 첫 화면 보조 문구 자리: 필요할 때 <p> 안에 내용을 넣으면 된다 -->
-      <p class="hero-sub"></p>
+  <section aria-labelledby="about">
+    <h2 id="about">소개</h2>
+    <div class="profile">
+      <span class="portrait">{% if about.photo %}<img src="{{ about.photo | relative_url }}" alt="{{ site.name }} 작가">{% endif %}</span>
+      <ul class="names" aria-label="이름 표기">{% for name in about.names %}<li>{{ name | escape }}</li>{% endfor %}</ul>
     </div>
+    {%- if about.lede %}
+    <p class="lede">{{ about.lede | escape }}</p>
+    {%- endif %}
+    {{ about.body | markdownify }}
+  </section>
 
-    <section aria-labelledby="about">
-      <h2 id="about">소개</h2>
-      <div class="profile">
-        <span class="portrait"><img src="assets/images/profile.jpg" alt="온정 작가" width="400" height="400"></span>
-        <ul class="names" aria-label="이름 표기"><li>온정</li><li lang="en">Onjung</li></ul>
-      </div>
-      <!-- 작가 블로그 이력 글의 소개 문구 원문 (https://blog.naver.com/nayoon123_/223817509050) -->
-      <p class="lede">여행하고 글 쓸 때 가장 나다워지는 사람.</p>
-      <p>1990년에 태어났다. 고분자공학으로 석사 학위를 받은 뒤 화학 연구원으로 일했지만 좀처럼 정착하지 못했다. 방황의 길목에서 글을 쓰기 시작하여 이제는 화학보다 글쓰기에 더 가까운 삶을 살고 있다. 지금까지 네 권의 에세이를 썼고, SF 앤솔로지에 단편 소설을 싣기도 했다.</p>
-      <p>당연한 듯 흘러가는 일상을 새삼스레 붙잡아두고 관찰하는 일을 좋아한다. 『사물을 보는 방식』 역시 그런 습관에서 시작되었다. 매일 생각 없이 하던 일들로부터, 가령 손톱을 깎고 설거지를 하고 양치를 하고 사과를 씹어 먹다가 글감을 얻었다. 사람들이 무심코 하는 행동이나 사물의 속성에도 배울 점이 있다는 걸 깨달았다. 그 이야기들을 부지런히 글로 옮기며, 오늘도 세상으로부터 인생을 배운다.</p>
-    </section>
+  <section aria-labelledby="books">
+    <h2 id="books">저서</h2>
+    <ol class="timeline books" reversed>
+      {%- for book in site.data.books.books %}
+      <li>
+        <span class="y">{{ book.year }}</span>
+        <span class="cover">{% if book.cover %}<img src="{{ book.cover | relative_url }}" alt="『{{ book.title | escape }}』 표지" loading="lazy">{% endif %}</span>
+        <span>
+          {%- if book.link %}<a class="t" href="{{ book.link | escape }}">{{ book.title | escape }}</a>{% else %}<span class="t">{{ book.title | escape }}</span>{% endif %}
+          {%- if book.description %}<span class="d">{{ book.description | escape }}</span>{% endif -%}
+        </span>
+      </li>
+      {%- endfor %}
+    </ol>
+  </section>
 
-    <section aria-labelledby="books">
-      <h2 id="books">저서</h2>
-      <ol class="timeline books" reversed>
-        <li><span class="y">2025</span><span class="cover" style="--c:#F4E8E1"><img src="assets/images/covers/book-2025-sabul.jpg" alt="『사물을 보는 방식』 표지" width="458" height="672" loading="lazy"></span><span><a class="t" href="https://search.shopping.naver.com/book/catalog/55608405506">사물을 보는 방식</a><span class="d">산문집, 마누스</span></span></li>
-        <li><span class="y">2024</span><span class="cover" style="--c:#EEEAE2"><img src="assets/images/covers/book-2024-dolbom.jpg" alt="『너를 돌보며 어른이 된다』 표지" width="458" height="672" loading="lazy"></span><span><a class="t" href="https://search.shopping.naver.com/book/catalog/50379168642">너를 돌보며 어른이 된다</a><span class="d">에세이, 마누스</span></span></li>
-        <li><span class="y">2022</span><span class="cover" style="--c:#F2E6E6"><img src="assets/images/covers/book-2022-banghwang.jpg" alt="『방황의 조각들』 표지" width="458" height="672" loading="lazy"></span><span><a class="t" href="https://search.shopping.naver.com/book/catalog/32470523653">방황의 조각들</a><span class="d">에세이, 삼십춘기 화학 연구원의 방황 이야기, 마누스</span></span></li>
-        <li><span class="y">2021</span><span class="cover" style="--c:#EAEBE4"><img src="assets/images/covers/book-2021-sangsil.jpg" alt="『상실의 이해』 표지" width="411" height="687" loading="lazy"></span><span><a class="t" href="https://search.shopping.naver.com/book/catalog/32456305856">상실의 이해</a><span class="d">과학 스토리 단편선, 공저, 월간토마토</span></span></li>
-        <li><span class="y">2021</span><span class="cover" style="--c:#F4EDE0"><img src="assets/images/covers/book-2021-miseobu.jpg" alt="『미서부, 같이 가줄래?』 표지" width="442" height="687" loading="lazy"></span><span><a class="t" href="https://search.shopping.naver.com/book/catalog/32443833181">미서부, 같이 가줄래?</a><span class="d">에세이, 부부라는 이름으로 1800km 로드트립, 푸른길</span></span></li>
-      </ol>
-    </section>
+  {%- include history.html id="awards" title="수상과 선정" data=site.data.awards %}
 
-    <section aria-labelledby="awards">
-      <h2 id="awards">수상과 선정</h2>
-      <ol class="timeline grouped">
-        <li><span class="y">2026</span><ul><li><span class="t">『사물을 보는 방식』 오디오북 제작 지원 사업 선정</span><span class="d">한국출판문화산업진흥원, 제1차</span></li></ul></li>
-        <li><span class="y">2025</span><ul><li><span class="t">『사물을 보는 방식』 온라인 서점 3사 MD 추천</span><span class="d">알라딘, 예스24, 교보문고</span></li><li><span class="t">『너를 돌보며 어른이 된다』 찾아가는 도서전(뉴욕) 개최 사업 선정</span><span class="d">한국출판문화산업진흥원</span></li><li><span class="t">『너를 돌보며 어른이 된다』 오디오북 제작 지원 사업 선정</span><span class="d">한국출판문화산업진흥원, 제1차</span></li></ul></li>
-        <li><span class="y">2024</span><ul><li><span class="t">『너를 돌보며 어른이 된다』 대구 우수출판콘텐츠 선정</span><span class="d">대구출판산업지원센터</span></li></ul></li>
-        <li><span class="y">2022</span><ul><li><span class="t">『방황의 조각들』 ARKO 문학나눔 선정</span><span class="d">한국문화예술위원회</span></li></ul></li>
-        <li><span class="y">2021</span><ul><li><span class="t">제8회 과학소재 장르문학 단편소설 공모전 우수상</span><span class="d">대전정보문화산업진흥원</span></li><li><span class="t">월간 『좋은생각』 제6회 청년이야기대상 장려상</span></li></ul></li>
-      </ol>
-    </section>
+  {%- include history.html id="activities" title="강의와 활동" data=site.data.activities %}
 
-    <section aria-labelledby="activities">
-      <h2 id="activities">강의와 활동</h2>
-      <ol class="timeline grouped">
-        <li><span class="y">2026</span><ul><li><a class="t" href="https://yeyak.hscity.go.kr/1002/3001/lectureDetail.do?institutionIdx=176&amp;lectureIdx=28455">화성시 신진작가 양성 과정 에세이 지도 강사</a><span class="d">14주 과정</span></li><li><span class="t">『사물을 보는 방식』 글쓰기 워크숍과 북토크</span><span class="d">오세요 책방(동탄), 2주 과정</span></li><li><span class="t">'작가의 책상' 전시</span><span class="d">오세요 책방(동탄)</span></li><li><span class="t">강연, 『사물을 보는 방식』 글쓰기 모임</span><span class="d">오운북앤바, 2주 과정</span></li><li><a class="t" href="https://www.gseek.kr/user/course/video/view?s_sbjct_sn=59283&amp;s_sbjct_cycl_sn=1">'상반기를 정리하는 나의 이야기 쓰기, 에세이 입문' 강의</a><span class="d">경기도 평생학습 포털 GSEEK, 화상 강의</span></li><li><span class="t">이마리 「안부」 작사</span></li></ul></li>
-        <li><span class="y">2025</span><ul><li><span class="t">『사물을 보는 방식』 북토크</span><span class="d">지금책방, 사사로운, 마블코북스</span></li><li><a class="t" href="https://www.weallwrite.kr/program/?idx=103">위올라잇 에세이 쓰기 클래스 '쓰담쓰담'</a><span class="d">5주 과정</span></li><li><span class="t">오운북앤바 밍글링 파티 에세이 셀러 참여</span></li><li><span class="t">한우리 독서지도사 자격증 취득</span></li></ul></li>
-      </ol>
-    </section>
-
-    <section aria-labelledby="contact">
-      <h2 id="contact">연락</h2>
-      <ul class="links">
-        <li><a href="mailto:onjung.writer@gmail.com">onjung.writer@gmail.com</a></li>
-        <li><a href="https://brunch.co.kr/@travelna">브런치</a></li>
-        <li><a href="https://blog.naver.com/nayoon123_">블로그</a></li>
-        <li><a href="https://www.instagram.com/onjung.writer">인스타그램</a></li>
-        <li><a href="https://linktr.ee/onjung">링크트리</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="site-footer">© 2026 온정</footer>
-</div>
-</body>
-</html>
+  <section aria-labelledby="contact">
+    <h2 id="contact">연락</h2>
+    <ul class="links">
+      {%- if contact.email %}
+      <li><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></li>
+      {%- endif %}
+      {%- for link in contact.links %}
+      <li><a href="{{ link.url | escape }}">{{ link.label | escape }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+</main>

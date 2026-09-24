@@ -1,0 +1,132 @@
+# 온정 사이트 관리 화면 설정 (Sveltia CMS)
+# 저장하면 GitHub 저장소 main 브랜치에 커밋되고, 1~2분 뒤 사이트에 반영됩니다.
+
+backend:
+  name: github
+  repo: onjungwriter/onjungwriter.github.io
+  branch: main
+  commit_messages:
+    create: "{{collection}} 추가: {{slug}}"
+    update: "{{collection}} 수정: {{slug}}"
+    delete: "{{collection}} 삭제: {{slug}}"
+    uploadMedia: "이미지 올림: {{path}}"
+    deleteMedia: "이미지 삭제: {{path}}"
+
+site_url: https://onjungwriter.github.io
+display_url: https://onjungwriter.github.io
+
+media_folder: assets/images
+public_folder: /assets/images
+
+collections:
+  # ───── 소개 페이지 ─────
+  - name: page
+    label: 소개 페이지
+    editor: { preview: true }
+    files:
+      - name: hero
+        label: 첫 화면
+        file: _data/hero.yml
+        fields:
+          - name: title
+            label: 첫 화면 카피
+            widget: text
+            hint: 줄을 바꾸면 화면에서도 줄이 바뀌어요.
+          - name: sub
+            label: 보조 문구
+            widget: text
+            required: false
+            hint: 비워두면 표시되지 않아요. 자리는 그대로 남아요.
+
+      - name: about
+        label: 소개
+        file: _data/about.yml
+        fields:
+          - { name: photo, label: 프로필 사진, widget: image, required: false }
+          - name: names
+            label: 이름 표기
+            widget: list
+            hint: "예: 온정, Onjung"
+          - { name: lede, label: 한 줄 소개, widget: string, required: false }
+          - { name: body, label: 소개 글, widget: markdown }
+
+      - name: contact
+        label: 연락
+        file: _data/contact.yml
+        fields:
+          - { name: email, label: 이메일, widget: string, required: false }
+          - name: links
+            label: 링크
+            label_singular: 링크
+            widget: list
+            summary: "{{label}}"
+            fields:
+              - { name: label, label: 이름, widget: string, hint: "예: 인스타그램" }
+              - { name: url, label: 주소, widget: string }
+
+  # ───── 저서 ─────
+  - name: books
+    label: 저서
+    files:
+      - name: books
+        label: 저서 목록
+        file: _data/books.yml
+        fields:
+          - name: books
+            label: 책
+            label_singular: 책
+            widget: list
+            hint: 위에 있는 책이 먼저 보여요. 새 책은 맨 위로 옮겨 주세요.
+            summary: "{{year}} {{title}}"
+            fields:
+              - { name: title, label: 제목, widget: string }
+              - name: year
+                label: 출간 연도
+                widget: string
+                pattern: ['^\d{4}$', '연도는 숫자 네 자리로 적어 주세요. 예: 2026']
+              - name: description
+                label: 설명
+                widget: string
+                required: false
+                hint: "장르, 부제, 출판사를 쉼표로 이어서 적어요. 예: 산문집, 마누스"
+              - name: cover
+                label: 표지
+                widget: image
+                required: false
+                media_folder: /assets/images/covers
+                public_folder: /assets/images/covers
+              - { name: link, label: 구매 링크, widget: string, required: false }
+
+  # ───── 이력 ─────
+  - name: history
+    label: 이력
+    files:
+      - name: awards
+        label: 수상과 선정
+        file: _data/awards.yml
+        fields: &history_fields
+          - name: years
+            label: 연도
+            label_singular: 연도
+            widget: list
+            hint: 위에 있는 연도가 먼저 보여요. 새 연도는 맨 위로 옮겨 주세요.
+            summary: "{{year}}"
+            fields:
+              - name: year
+                label: 연도
+                widget: string
+                pattern: ['^\d{4}$', '연도는 숫자 네 자리로 적어 주세요. 예: 2026']
+              - name: items
+                label: 항목
+                label_singular: 항목
+                widget: list
+                summary: "{{title}}"
+                fields:
+                  - { name: title, label: 내용, widget: string }
+                  - { name: detail, label: 기관·장소·설명, widget: string, required: false }
+                  - { name: link, label: 링크, widget: string, required: false }
+
+      - name: activities
+        label: 강의와 활동
+        file: _data/activities.yml
+        fields: *history_fields

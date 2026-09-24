@@ -2,3 +2,5 @@
 .claude/
 _site/
 .jekyll-cache/
+Gemfile.lock
+vendor/

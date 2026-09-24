@@ -1,0 +1,16 @@
+{%- comment %}
+연도별로 묶은 이력 목록 (수상과 선정, 강의와 활동)
+사용: {% include history.html id="awards" title="수상과 선정" data=site.data.awards %}
+{% endcomment -%}
+<section aria-labelledby="{{ include.id }}">
+    <h2 id="{{ include.id }}">{{ include.title }}</h2>
+    <ol class="timeline grouped">
+      {%- for group in include.data.years %}
+      <li><span class="y">{{ group.year }}</span><ul>
+        {%- for item in group.items %}
+        <li>{% if item.link %}<a class="t" href="{{ item.link | escape }}">{{ item.title | escape }}</a>{% else %}<span class="t">{{ item.title | escape }}</span>{% endif %}{% if item.detail %}<span class="d">{{ item.detail | escape }}</span>{% endif %}</li>
+        {%- endfor %}
+      </ul></li>
+      {%- endfor %}
+    </ol>
+  </section>
